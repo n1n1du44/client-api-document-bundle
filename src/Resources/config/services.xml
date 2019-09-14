@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+        http://symfony.com/schema/dic/services/services-1.0.xsd">
+  <services>
+    <service id="n1n1du44_client_api_document.api_document_communication_service" class="N1n1du44\ClientApiDocumentBundle\ApiDocumentCommunicationService" />
+    <service id="n1n1du44_client_api_document.api_document_service" class="N1n1du44\ClientApiDocumentBundle\ApiDocumentService">
+      <argument type="service" id="n1n1du44_client_api_document.api_document_communication_service"/>
+    </service>
+
+    <service alias="n1n1du44_client_api_document.api_document_communication_service" id="N1n1du44\ClientApiDocumentBundle\ApiDocumentCommunicationService" />
+    <service alias="n1n1du44_client_api_document.api_document_service" id="N1n1du44\ClientApiDocumentBundle\ApiDocumentService" />
+
+  </services>
+</container>
