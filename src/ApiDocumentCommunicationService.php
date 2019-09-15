@@ -95,11 +95,13 @@ class ApiDocumentCommunicationService
    * @throws ServerExceptionInterface
    */
   public function sendGetRequest($url, $retryMode = false) {
+    $completeUrl = $this->urlApi . $url;
     $requestResult = [
       'http_code' => 0,
       'content' => null,
       'error' => false,
-      'error_message' => null
+      'error_message' => null,
+      'url' => $completeUrl
     ];
 
     if (is_null($this->jwtToken) || $retryMode) {
@@ -111,7 +113,7 @@ class ApiDocumentCommunicationService
 
     $httpClient = new CurlHttpClient(array('auth_bearer' => $this->jwtToken));
     try {
-      $response = $httpClient->request("GET", $this->urlApi . $url);
+      $response = $httpClient->request("GET", $completeUrl);
       $requestResult['http_code'] = $response->getStatusCode();
       if ($requestResult['http_code'] == 201 || $requestResult['http_code'] == 200) {
         $requestResult['content'] = json_decode($response->getContent(), true );

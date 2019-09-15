@@ -55,9 +55,7 @@ class ApiDocumentService
   public function getOcr($documentId) {
     $url = '/documents/' . $documentId . '/ocr';
     $resultat = $this->apiDocumentCommunicationService->sendGetRequest($url);
-    var_dump($resultat);
-    die;
-    $resultat = ['http_code' => 500];
+    
     if ($resultat['http_code'] == 200) {
       return $resultat['content'];
     } else {
