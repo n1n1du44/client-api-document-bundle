@@ -137,7 +137,7 @@ class ApiDocumentCommunicationService
    */
   public function authenticate() {
 
-      $globalUrl = $this->urlApi . 'authentication_token' ;
+      $globalUrl = $this->urlApi . '/authentication_token' ;
     $httpClient = HttpClient::create();
     $response = $httpClient->request('POST', $globalUrl, [
       'json' => ['username' => $this->login,'password' => $this->password]
