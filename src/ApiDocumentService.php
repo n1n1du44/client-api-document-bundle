@@ -44,7 +44,7 @@ class ApiDocumentService
       'password' => $this->apiDocumentCommunicationService->getPassword()
     ];
 
-    $result = $this->apiDocumentCommunicationService->sendPostRequest('add-local-document', $postData);
+    $result = $this->apiDocumentCommunicationService->sendPostRequest('/add-local-document', $postData);
     if ($result['http_code'] == 201) {
       return $result['content']->document_id;
     } else {
@@ -53,7 +53,7 @@ class ApiDocumentService
   }
 
   public function getOcr($documentId) {
-    $url = 'api/documents/' . $documentId . '/ocr';
+    $url = '/documents/' . $documentId . '/ocr';
     $resultat = $this->apiDocumentCommunicationService->sendGetRequest($url);
     var_dump($resultat);
     die;
