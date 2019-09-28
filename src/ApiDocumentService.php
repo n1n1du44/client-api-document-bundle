@@ -63,5 +63,27 @@ class ApiDocumentService
     }
   }
 
+  /**
+   * @param $text
+   * @param $codeTypeDocument
+   * @return mixed
+   */
+  public function getInformationsFromText($text, $codeTypeDocument)
+  {
+    $postData = [
+      'text' => $text,
+      'code_type_document' => $codeTypeDocument,
+      'login' => $this->apiDocumentCommunicationService->getLogin(),
+      'password' => $this->apiDocumentCommunicationService->getPassword()
+    ];
+
+    $result = $this->apiDocumentCommunicationService->sendPostRequest('/get-informations-from-text', $postData);
+    if ($result['http_code'] == 200) {
+      return $result['content'];
+    } else {
+      return false;
+    }
+  }
+
 
 }
