@@ -79,9 +79,14 @@ class ApiDocumentService
 
     $result = $this->apiDocumentCommunicationService->sendPostRequest('/get-informations-from-text', $postData);
     if ($result['http_code'] == 200) {
-      return $result['content'];
+      return
+        [
+          'success' => true,
+          'content' => $result['content']
+        ];
     } else {
-      return false;
+      return
+        ['success' => false];
     }
   }
 
