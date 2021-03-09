@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": "^7.1.3",
-        "symfony/http-client": "^4.3@dev"
+        "symfony/http-client": "*"
     },
     "autoload": {
         "psr-4": {
