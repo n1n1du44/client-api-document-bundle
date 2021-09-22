@@ -49,6 +49,7 @@ class ApiDocumentCommunicationService
     $requestResult = [
       'http_code' => 0,
       'content' => null,
+      'token' => null,
       'error' => false,
       'error_message' => null
     ];
@@ -60,6 +61,7 @@ class ApiDocumentCommunicationService
       }
     }
 
+    $requestResult['token'] = $this->jwtToken;
 
     $target_url = $this->urlApi . $url;
 
@@ -101,6 +103,7 @@ class ApiDocumentCommunicationService
       'content' => null,
       'error' => false,
       'error_message' => null,
+      'token' => null,
       'url' => $completeUrl
     ];
 
@@ -112,6 +115,7 @@ class ApiDocumentCommunicationService
     }
 
     $httpClient = new CurlHttpClient(array('auth_bearer' => $this->jwtToken));
+    $requestResult['token'] = $this->jwtToken;
     try {
       $response = $httpClient->request("GET", $completeUrl);
       $requestResult['http_code'] = $response->getStatusCode();
