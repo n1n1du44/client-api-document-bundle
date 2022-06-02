@@ -25,7 +25,7 @@ class ClientApiDocumentExtension extends Extension
     $definition->setArgument(2, $config['api_document_password']);
   }
 
-  public function getAlias()
+  public function getAlias() : string
   {
     return 'client_api_document';
   }
