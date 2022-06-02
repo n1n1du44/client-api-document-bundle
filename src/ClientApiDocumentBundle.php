@@ -9,7 +9,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class ClientApiDocumentBundle extends Bundle
 {
-  public function getContainerExtension()
+  public function getContainerExtension() : ?ClientApiDocumentExtension
   {
     if (null === $this->extension) {
       $this->extension = new ClientApiDocumentExtension();
